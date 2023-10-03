@@ -1,7 +1,7 @@
 {
   "name": "0xvnft-portfolio",
   "version": "1.0.0",
-  "description": "Free for personal and commercial use under the CCA 3.0 license",
+  "description": "My portfolio",
   "main": "index.js",
   "scripts": {
     "compile:sass": "sass assets/sass:assets/css"
