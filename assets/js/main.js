@@ -109,7 +109,7 @@
 
 			var on = function() {
 
-				// Galleries.
+				// repo.
 					$('.repo')
 						.scrollex({
 							top:		'30vh',
@@ -157,7 +157,7 @@
 
 			var off = function() {
 
-				// Galleries.
+				// repo
 					$('.repo')
 						.unscrollex();
 
