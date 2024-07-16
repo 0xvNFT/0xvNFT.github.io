@@ -6,6 +6,9 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
+	<!-- <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" /> -->
+	 <!-- Add a link to a blank favicon -->
+	 <link rel="icon" href="data:;base64,=">
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
@@ -148,16 +151,16 @@
 				<p>If you're interested in collaborating or learning more about my work, feel free to reach out.</p>
 			</header>
 			<div class="box">
-				<form method="post" action="#">
+				<form id="contactForm" method="post" action="#">
 					<div class="fields">
-						<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
-						<div class="field half"><input type="email" name="email" placeholder="Email" /></div>
-						<div class="field"><textarea name="message" placeholder="Message" rows="6"></textarea></div>
+					  <div class="field half"><input type="text" id="name" name="name" placeholder="Name" /></div>
+					  <div class="field half"><input type="email" id="email" name="email" placeholder="Email" /></div>
+					  <div class="field"><textarea id="message" name="message" placeholder="Message" rows="6"></textarea></div>
 					</div>
 					<ul class="actions special">
-						<li><input type="submit" value="Send Message" /></li>
+					  <li><input type="submit" value="Send Message" /></li>
 					</ul>
-				</form>
+				  </form>				  
 				<!-- Download Resume Button
 				<a href="path/to/your/resume.pdf" download class="button special">Download Resume</a> -->
 			</div>
@@ -194,7 +197,32 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+	<!-- Form Submission Script -->
+	<script>
+	  document.getElementById('contactForm').addEventListener('submit', function (event) {
+		event.preventDefault();
+	
+		const name = document.getElementById('name').value;
+		const email = document.getElementById('email').value;
+		const message = document.getElementById('message').value;
+	
+		axios.post('http://localhost:8080/api/messages', {
+		  name: name,
+		  email: email,
+		  message: message
+		})
+		.then(function (response) {
+		  alert('Message sent successfully!');
+		  console.log(response.data);
+		})
+		.catch(function (error) {
+		  alert('An error occurred while sending the message.');
+		  console.error(error);
+		});
+	  });
+	</script>	
 </body>
 
 </html>
